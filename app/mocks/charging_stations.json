@@ -1,0 +1,386 @@
+[
+  {
+    "id": 1,
+    "name": "昊铂北京国贸SKP超充站",
+    "status": {
+      "available": 2,
+      "total": 10
+    },
+    "type": "super",
+    "isTesla": false,
+    "chargingType": null,
+    "address": "北京市-朝阳区-西大望路地面停车场",
+    "lat": 39.919179,
+    "lng": 116.485744,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "07:00",
+        "electricityFee": 0.83,
+        "serviceFee": 0.16
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "10:00",
+        "electricityFee": 0.83,
+        "serviceFee": 0.22
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "13:00",
+        "electricityFee": 0.83,
+        "serviceFee": 0.29
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "22:00",
+        "electricityFee": 0.83,
+        "serviceFee": 0.24
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.83,
+        "serviceFee": 0.16
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "北京华贸中心体验店",
+    "status": {
+      "available": 3,
+      "total": 11
+    },
+    "type": "super",
+    "isTesla": true,
+    "chargingType": "V2",
+    "address": "北京市朝阳区建国路79-81号",
+    "lat": 39.914813,
+    "lng": 116.486675,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "09:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "21:00",
+        "electricityFee": 1.2,
+        "serviceFee": 1.1
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "electricityFee": 0.86,
+        "serviceFee": 1.09
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "北京金地中心",
+    "status": {
+      "available": 6,
+      "total": 12
+    },
+    "type": "super",
+    "isTesla": true,
+    "chargingType": "V2",
+    "address": "北京市北京朝阳区建国路91号B2层B区B2-053车位建国路",
+    "lat": 39.91488,
+    "lng": 116.481841,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "09:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "21:00",
+        "electricityFee": 1.2,
+        "serviceFee": 1.1
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "electricityFee": 0.86,
+        "serviceFee": 1.09
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "北京佳兆业广场",
+    "status": {
+      "available": 2,
+      "total": 10
+    },
+    "type": "super",
+    "isTesla": true,
+    "chargingType": "V3",
+    "address": "北京市北京市朝阳区建国路86号地下B2层",
+    "lat": 39.913078,
+    "lng": 116.485107,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "09:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "21:00",
+        "electricityFee": 1.2,
+        "serviceFee": 1.1
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "electricityFee": 0.86,
+        "serviceFee": 1.09
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "北京华贸中心（地上)",
+    "status": {
+      "available": 3,
+      "total": 15
+    },
+    "type": "super",
+    "isTesla": true,
+    "chargingType": "V3",
+    "address": "北京市北京朝阳区建国路79-81号建国路",
+    "lat": 39.914544,
+    "lng": 116.48774,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "09:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "21:00",
+        "electricityFee": 1.2,
+        "serviceFee": 1.1
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "electricityFee": 0.86,
+        "serviceFee": 1.09
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "北京华贸中心（地下）",
+    "status": {
+      "available": 1,
+      "total": 15
+    },
+    "type": "super",
+    "isTesla": true,
+    "chargingType": "V2",
+    "address": "北京市北京建国路77号华贸购物中心地下B3层B3482车位，入口华贸东路，进车库后右转下行至B3右转",
+    "lat": 39.914896,
+    "lng": 116.488116,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "09:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      },
+      {
+        "startTime": "09:00",
+        "endTime": "21:00",
+        "electricityFee": 1.2,
+        "serviceFee": 1.1
+      },
+      {
+        "startTime": "21:00",
+        "endTime": "22:00",
+        "electricityFee": 0.86,
+        "serviceFee": 1.09
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.58,
+        "serviceFee": 1.17
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "北京朝阳蓝堡北区充电站",
+    "status": {
+      "available": 5,
+      "total": 5
+    },
+    "type": "fast",
+    "isTesla": false,
+    "chargingType": null,
+    "address": "北京市-朝阳区-建外街道蓝堡国际公寓北区地下三层",
+    "lat": 39.917635,
+    "lng": 116.482988,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "07:00",
+        "electricityFee": 0.6,
+        "serviceFee": 0.12
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "10:00",
+        "electricityFee": 0.9,
+        "serviceFee": 0.09
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "13:00",
+        "electricityFee": 1.05,
+        "serviceFee": 0.1
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "22:00",
+        "electricityFee": 0.9,
+        "serviceFee": 0.1
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.6,
+        "serviceFee": 0.12
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "北京朝阳SOHO现代城充电站",
+    "status": {
+      "available": 2,
+      "total": 9
+    },
+    "type": "fast",
+    "isTesla": false,
+    "chargingType": null,
+    "address": "北京市-朝阳区-西大望路与现代城中路交叉口停车楼顶层",
+    "lat": 39.912243,
+    "lng": 116.483762,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "07:00",
+        "electricityFee": 0.39,
+        "serviceFee": 0.22
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "10:00",
+        "electricityFee": 0.63,
+        "serviceFee": 0.27
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "13:00",
+        "electricityFee": 0.86,
+        "serviceFee": 0.3
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "22:00",
+        "electricityFee": 0.63,
+        "serviceFee": 0.22
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.39,
+        "serviceFee": 0.22
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "BP快速充电站",
+    "status": {
+      "available": 5,
+      "total": 12
+    },
+    "type": "super",
+    "isTesla": false,
+    "chargingType": null,
+    "address": "北京市-朝阳区-建外街道景辉南街新世界百货(大望路店)",
+    "lat": 39.915278,
+    "lng": 116.480065,
+    "priceDetails": [
+      {
+        "startTime": "00:00",
+        "endTime": "07:00",
+        "electricityFee": 0.39,
+        "serviceFee": 0.29
+      },
+      {
+        "startTime": "07:00",
+        "endTime": "10:00",
+        "electricityFee": 0.63,
+        "serviceFee": 0.25
+      },
+      {
+        "startTime": "10:00",
+        "endTime": "13:00",
+        "electricityFee": 0.87,
+        "serviceFee": 0.27
+      },
+      {
+        "startTime": "13:00",
+        "endTime": "22:00",
+        "electricityFee": 0.63,
+        "serviceFee": 0.25
+      },
+      {
+        "startTime": "22:00",
+        "endTime": "24:00",
+        "electricityFee": 0.39,
+        "serviceFee": 0.29
+      }
+    ]
+  }
+]

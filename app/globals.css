@@ -27,3 +27,11 @@ body {
     text-wrap: balance;
   }
 }
+
+.ant-drawer-content-wrapper {
+  width: 480px !important;
+}
+
+.ant-tag.status {
+  margin-right: 0px !important;
+}

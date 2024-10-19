@@ -1,13 +1,8 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useMap, useMapContext, useMarker } from '@uiw/react-baidu-map';
 import * as styleJson from '../../config/style.json';
 import { useAppStore } from '@/app/providers';
-
-const mock_stations = [
-  { lng: 116.48767, lat: 39.913959, data: { name: 'test1' } },
-  { lng: 116.4839, lat: 39.914942, data: { name: 'test2' } },
-  { lng: 116.48709, lat: 39.915929, data: { name: 'test3' } },
-];
+import mock_stations from '@/app/mocks/charging_stations.json';
 
 const BaiduMap = () => {
   const { map } = useMapContext();
@@ -20,7 +15,9 @@ const BaiduMap = () => {
     enableContinuousZoom: true,
   });
 
-  const { view, setCurrentStation } = useAppStore(state => state);
+  const [clickData, setClickData] = useState<any>();
+
+  const { view, setCurrentStation, currentStation, setMap } = useAppStore(state => state);
 
   useEffect(() => {
     if (containerRef?.current) {
@@ -29,41 +26,48 @@ const BaiduMap = () => {
   }, [containerRef?.current]);
 
   useEffect(() => {
+    if (clickData?.id === currentStation?.data?.id) return;
+
+    if (currentStation?.marker) {
+      map.removeOverlay(currentStation?.marker);
+    }
+
+    const icon = new BMap.Icon(`/images/${clickData.type}_marker.png`, new BMap.Size(56, 56));
+    const point = new BMap.Point(clickData.lng, clickData.lat);
+    const marker = new BMap.Marker(point, { icon });
+    map.addOverlay(marker);
+
+    setCurrentStation({ data: clickData, marker });
+  }, [clickData]);
+
+  useEffect(() => {
     if (map) {
+      setMap(map);
+
       map.setMapStyleV2({ styleJson });
-
-      // const icon = new BMap.Icon('/images/location_icon.png', new BMap.Size(64, 64));
-      // const point = new BMap.Point(116.48737, 39.914949);
-      // const marker = new BMap.Marker(point, { icon });
-      // map.addOverlay(marker);
-
-      // (map as BMapGL.Map).start
       map.setTilt(45);
 
-      addMarker('push-pin', { lng: 116.48737, lat: 39.914949 });
+      addMarker('push-pin', { lng: 116.48737, lat: 39.914949 }, 48);
 
       mock_stations.forEach(station => {
-        addMarker('charging_station', station);
+        addMarker(station.type, station);
       });
     }
   }, [map]);
 
-  const addMarker = (name: string, data: any) => {
-    const icon = new BMap.Icon(`/images/${name}.png`, new BMap.Size(48, 48));
+  const addMarker = (name: string, data: any, size = 32) => {
+    const icon = new BMap.Icon(`/images/${name}.png`, new BMap.Size(size, size));
     const point = new BMap.Point(data.lng, data.lat);
     const marker = new BMap.Marker(point, { icon });
 
-    if (data?.data) {
+    if (data?.id) {
       marker.addEventListener('click', () => clickEvent(data));
     }
 
     map.addOverlay(marker);
   };
 
-  const clickEvent = (data: any) => {
-    console.log(view, data.name);
-    setCurrentStation(data);
-  };
+  const clickEvent = (data: any) => setClickData(JSON.parse(JSON.stringify(data)));
 
   return <div ref={containerRef} className='w-full h-full'></div>;
 };
