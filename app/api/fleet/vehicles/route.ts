@@ -23,7 +23,9 @@ export async function GET() {
     count: number
   }>("vehicles", { headers: {
     Authorization: `Bearer ${accessToken}`
-  }})
+  }}).json();
+
+  console.log(res);
 
   return Response.json(res);
 }

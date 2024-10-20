@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
   searchParams.append("token", accessToken);
 
-  await fetchCommandApi("flashLights", { searchParams })
+  await fetchCommandApi("flashLights", { searchParams }).json();
 
   return new Response("Flash Lights!");
 }

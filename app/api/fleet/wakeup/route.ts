@@ -27,7 +27,7 @@ export async function GET(request: Request) {
     count: number;
   }>(`vehicles/${vin}/wake_up`, { headers: {
     Authorization: `Bearer ${accessToken}`
-  }})
+  }}).json();
 
   return Response.json(res);
 }

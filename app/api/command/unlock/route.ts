@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
   searchParams.append("token", accessToken);
 
-  await fetchCommandApi("unlock", { searchParams })
+  await fetchCommandApi("unlock", { searchParams }).json();
 
   return new Response("Unlock!");
 }
