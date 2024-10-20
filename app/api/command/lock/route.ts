@@ -21,7 +21,11 @@ export async function GET(request: Request) {
 
   searchParams.append("token", accessToken);
 
-  await fetchCommandApi("lock", { searchParams }).json();
+  console.log("locking!")
 
-  return new Response("Lock!");
+  const res = await fetchCommandApi("lock", { searchParams });
+
+  const data = await res.text();
+
+  return new Response(data);
 }
