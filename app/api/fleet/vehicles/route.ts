@@ -17,7 +17,7 @@ export async function GET() {
     throw new Error('Not has token')
   }
 
-  const res = await fetchFleetCNApi<{
+  const res = await fetchFleetCNApi.get<{
     response: any[];
     pagination: any;
     count: number

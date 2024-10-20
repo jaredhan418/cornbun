@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
   const vin = searchParams.get("vin");
 
-  const res = await fetchFleetCNApi<{
+  const res = await fetchFleetCNApi.post<{
     response: any[];
     pagination: any;
     count: number;
