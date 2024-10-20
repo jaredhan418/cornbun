@@ -1,27 +1,16 @@
 import NextAuth from "next-auth"
 import { skipCSRFCheck } from "@auth/core";
+import { PrismaAdapter } from "@auth/prisma-adapter"
+
+import { prisma } from "@/prisma"
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  callbacks: {
-    jwt({ account, token }) {
-      if (account?.access_token) {
-        return {
-          ...token,
-          accessToken: account.access_token
-        }
-      }
-      return token;
-    },
-    async session({session, token}) {
-      session.accessToken = token.accessToken
-      return session;
-    }
-  },
+  adapter: PrismaAdapter(prisma),
   providers: [{
     authorization: {
       url: "https://auth.tesla.cn/oauth2/v3/authorize/",
       params: {
-        scope: "openid user_data vehicle_device_data vehicle_cmds offline_access",
+        scope: "openid profile user_data vehicle_device_data vehicle_cmds offline_access",
       },
     },
     token: "https://auth.tesla.cn/oauth2/v3/token/",
