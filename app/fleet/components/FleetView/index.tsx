@@ -248,7 +248,7 @@ const items: CollapseProps['items'] = [
     children: (
       <div className='flex justify-start items-start'>
         {['下个服务区大家休息！'].map(str => (
-          <div>{str}</div>
+          <div key={str}>{str}</div>
         ))}
       </div>
     ),
