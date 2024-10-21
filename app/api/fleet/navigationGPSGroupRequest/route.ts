@@ -21,11 +21,11 @@ export async function POST(request: Request) {
 
   const { searchParams } = new URL(request.url);
 
-  const groupId = searchParams.get('groupId');
+  const groupCode = searchParams.get('groupCode');
 
   const vins = await prisma.vininfo.findMany({
     where: {
-      groupId,
+      groupCode,
     },
   });
 
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       response: any[];
       pagination: any;
       count: number;
-    }>(`vehicles/${groupId}/command/navigation_gps_request`, {
+    }>(`vehicles/${vin}/command/navigation_gps_request`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
