@@ -11,8 +11,8 @@ export const fetchFleetCNApi = ky.create({
 });
 
 export const fetchApi = ky.create({
-  // prefixUrl: 'https://cornbun.fun/api/',
-  prefixUrl: 'http://localhost:3000/api/',
+  prefixUrl: 'https://cornbun.fun/api/',
+  // prefixUrl: 'http://localhost:3000/api/',
   timeout: 200000,
   hooks: {
     beforeError: [
