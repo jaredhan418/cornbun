@@ -1,6 +1,6 @@
 import { useAppStore } from '@/app/providers';
 import { CheckCircleFilled, CloseCircleFilled, CloseSquareFilled, ExclamationCircleFilled, LeftOutlined, LoadingOutlined } from '@ant-design/icons';
-import { Button, Collapse, CollapseProps, Divider, GetProps, Image, Input, Modal, Spin } from 'antd';
+import { Button, Collapse, CollapseProps, Divider, GetProps, Image, Input, message, Modal, Spin } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 import mock_data from '@/app/mocks/fleet.json';
@@ -79,15 +79,12 @@ function FleetView() {
         order: 1,
       };
 
-      const searchParams = new URLSearchParams();
-      searchParams.append('vin', 'LRW3E7ET0RC214201');
-
       const arr = await fetchApi.post(`fleet/navigationGPSRequest`, {
-        searchParams,
         json: body,
       });
 
       console.log(arr);
+      message.success('已成功推送到车机端!');
     }
   };
 
@@ -187,7 +184,13 @@ function FleetView() {
               <Divider type='vertical' />
               <div className='flex justify-center items-center pl-4 pr-8 py-4'>
                 <div className='flex justify-center items-center rounded' onClick={() => {}}>
-                  <CloseSquareFilled className='text-5xl' style={{ color: '#ed4e3b' }} />
+                  <CloseSquareFilled
+                    className='text-5xl'
+                    style={{ color: '#ed4e3b' }}
+                    onClick={() => {
+                      setHasTeam(false);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -203,7 +206,7 @@ function FleetView() {
           </div>
           <div className='italic text-sm text-gray-500'>通过输入6位密码来创建或申请加入一个已经存在的车队</div>
           <div className='my-6 flex justify-center items-center'>
-            <Input.OTP formatter={str => str.toUpperCase()} variant='filled' {...sharedProps} />
+            <Input.OTP formatter={str => str.toUpperCase()} variant='filled' {...sharedProps} value={code} />
           </div>
           {loading && <Spin className='w-full !my-3' indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />}
           {isFound && (
@@ -226,7 +229,14 @@ function FleetView() {
                       }, 1500);
                     }}
                   />
-                  <CloseCircleFilled className='text-5xl' style={{ color: '#ed4e3b' }} />
+                  <CloseCircleFilled
+                    className='text-5xl'
+                    style={{ color: '#ed4e3b' }}
+                    onClick={() => {
+                      setCode('');
+                      setIsFound(false);
+                    }}
+                  />
                 </div>
               ) : (
                 <Spin className='w-full !my-3' indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
@@ -245,13 +255,11 @@ const items: CollapseProps['items'] = [
   {
     key: '1',
     label: '快捷消息列表',
-    children: (
-      <div className='flex justify-start items-start'>
-        {['下个服务区大家休息！'].map(str => (
-          <div key={str}>{str}</div>
-        ))}
+    children: ['下个服务区大家休息！', '前方有事故，注意避让', '我需要帮助'].map(str => (
+      <div key={str} className='message flex justify-start items-start my'>
+        {str}
       </div>
-    ),
+    )),
   },
 ];
 

@@ -35,12 +35,12 @@ const BaiduMap = () => {
   }, [map, hasTeam]);
 
   useEffect(() => {
-    if (hasTeam) {
+    if (map && hasTeam) {
       mock_data.forEach(owner => {
         addMarker(`${owner.icon}_marker`, owner);
       });
     }
-  }, [hasTeam]);
+  }, [hasTeam, map]);
 
   const addMarker = (name: string, data: any, size = 64) => {
     const icon = new BMap.Icon(`/images/${name}.png`, new BMap.Size(size, size));

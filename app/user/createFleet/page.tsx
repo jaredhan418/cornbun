@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { fetchApi } from '@/app/serviceUtil';
 
 export default async function CreateFleet() {
@@ -15,7 +16,7 @@ export default async function CreateFleet() {
       json,
     });
 
-    alert('创建成功');
+    redirect('/fleet');
   };
 
   return (

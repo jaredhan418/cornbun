@@ -19,24 +19,32 @@ export async function POST(request: Request) {
     throw new Error('Not has token');
   }
 
-  const { searchParams } = new URL(request.url);
+  const vinInfo = await prisma.vininfo.findFirst({
+    where: {
+      userId: account.userId,
+    },
+  });
 
-  const vin = searchParams.get('vin');
+  const vin = vinInfo?.vin;
 
   const reqJson = await request.json();
 
-  const res = await fetchFleetCNApi
-    .post<{
-      response: any[];
-      pagination: any;
-      count: number;
-    }>(`vehicles/${vin}/command/navigation_gps_request`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      json: reqJson,
-    })
-    .json();
+  try {
+    const res = await fetchFleetCNApi
+      .post<{
+        response: any[];
+        pagination: any;
+        count: number;
+      }>(`vehicles/${vin}/command/navigation_gps_request`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        json: reqJson,
+      })
+      .json();
 
-  return Response.json(res);
+    return Response.json(res);
+  } catch (e) {
+    throw new Error(e as any);
+  }
 }

@@ -1,8 +1,9 @@
 import { useAppStore } from '@/app/providers';
 import { CoffeeOutlined, HeartFilled, HeartOutlined, PhoneFilled, ShopOutlined, ShoppingOutlined, ThunderboltFilled } from '@ant-design/icons';
-import { Alert, Button, Divider, Drawer, Tag } from 'antd';
+import { Alert, Button, Divider, Drawer, message, Tag } from 'antd';
 import React, { useState } from 'react';
 import { isCurrentTime } from '@/app/utils';
+import { fetchApi } from '@/app/serviceUtil';
 
 function CharginDetails() {
   const { currentStation, setCurrentStation, map } = useAppStore(s => s);
@@ -12,6 +13,23 @@ function CharginDetails() {
   const onClose = () => {
     map.removeOverlay(currentStation.marker);
     setCurrentStation(null);
+  };
+
+  const onNavigation = async () => {
+    if (currentStation?.data) {
+      const body = {
+        lat: data.lat,
+        lon: data.lng,
+        order: 1,
+      };
+
+      const arr = await fetchApi.post(`fleet/navigationGPSRequest`, {
+        json: body,
+      });
+
+      console.log(arr);
+      message.success('已成功推送到车机端!');
+    }
   };
 
   return (
@@ -40,7 +58,14 @@ function CharginDetails() {
               <Button size='large' className='text-3xl' shape='circle' icon={<PhoneFilled />} onClick={() => setIsFav(!fav)} />
             </div>
 
-            <Button size='large' className='!rounded w-60' style={{ backgroundColor: '#3e6ae1' }} type='primary' icon={<ThunderboltFilled />}>
+            <Button
+              size='large'
+              className='!rounded w-60'
+              style={{ backgroundColor: '#3e6ae1' }}
+              type='primary'
+              icon={<ThunderboltFilled />}
+              onClick={onNavigation}
+            >
               去充电
             </Button>
           </div>

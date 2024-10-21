@@ -21,9 +21,9 @@ export function BindVin(props: { vehicles: any[]; bindVin: (vin: string) => Prom
   };
 
   return (
-    <div>
-      <h2>选择绑定车辆</h2>
-      <form action={handleAction}>
+    <div className='flex flex-col justify-start'>
+      <div className='text-2xl font-bold mb-4'>选择绑定车辆</div>
+      <form className='mb-4' action={handleAction}>
         <RadioCards.Root>
           <Flex direction='column' gap='3' maxWidth='400px'>
             {vehicles.map((vehicle: any) => (
@@ -36,7 +36,9 @@ export function BindVin(props: { vehicles: any[]; bindVin: (vin: string) => Prom
             ))}
           </Flex>
         </RadioCards.Root>
-        <Button type='submit'>绑定</Button>
+        <Button size='3' className='!mt-4' type='submit'>
+          绑定
+        </Button>
       </form>
     </div>
   );

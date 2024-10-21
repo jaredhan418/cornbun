@@ -23,9 +23,9 @@ export async function addGroup(groupCode: string) {
       },
     });
 
-    if(!vinInfo) throw new Error('add group failure');
+    if (!vinInfo) throw new Error('add group failure');
 
-     await prisma.vininfo.update({
+    const result = await prisma.vininfo.update({
       where: {
         id: vinInfo.id,
       },
