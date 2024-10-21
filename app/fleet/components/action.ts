@@ -22,9 +22,12 @@ export async function addGroup(groupCode: string) {
         userId,
       },
     });
-    const result = await prisma.vininfo.update({
+
+    if(!vinInfo) throw new Error('add group failure');
+
+     await prisma.vininfo.update({
       where: {
-        id: vinInfo?.id,
+        id: vinInfo.id,
       },
       data: {
         groupCode,
