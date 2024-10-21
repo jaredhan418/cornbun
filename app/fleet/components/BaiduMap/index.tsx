@@ -2,9 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useMap, useMapContext, useMarker } from '@uiw/react-baidu-map';
 import * as styleJson from '../../config/style.json';
 import { useAppStore } from '@/app/providers';
-import mock_data from '@/app/mocks/fleet.json';
 
-const BaiduMap = () => {
+const BaiduMap = (props: any) => {
+  const { mapData } = props;
+
   const { map } = useMapContext();
   const containerRef = useRef(null);
   const { setContainer } = useMap({
@@ -36,11 +37,11 @@ const BaiduMap = () => {
 
   useEffect(() => {
     if (map && hasTeam) {
-      mock_data.forEach(owner => {
+      mapData.forEach((owner:any) => {
         addMarker(`${owner.icon}_marker`, owner);
       });
     }
-  }, [hasTeam, map]);
+  }, [hasTeam, map, mapData]);
 
   const addMarker = (name: string, data: any, size = 64) => {
     const icon = new BMap.Icon(`/images/${name}.png`, new BMap.Size(size, size));

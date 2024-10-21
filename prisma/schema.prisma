@@ -8,17 +8,19 @@ datasource db {
 }
 
 model vininfo {
-  id        Int     @id @default(autoincrement())
-  vin       String  @db.VarChar(17)
-  userId    String? @db.VarChar(255)
-  groupCode String?
+  id         Int     @id @default(autoincrement())
+  vin        String  @db.VarChar(17)
+  userId     String? @db.VarChar(255)
+  groupCode  String?
+  currentLon String?
+  currentLat String?
 }
 
 model vinGroup {
   id        Int     @id @default(autoincrement())
   groupCode String
-  ownerId   String
   groupName String?
+  ownerId   String
 }
 
 model User {
@@ -81,4 +83,20 @@ model Authenticator {
   user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model voiceStorage {
+  id        Int    @default(autoincrement())
+  voiceFile Bytes?
+
+  @@ignore
+}
+
+model otk {
+  id          Int     @id @default(autoincrement())
+  otkKey      String
+  accessToken String
+  vin         String
+  feature     String?
 }

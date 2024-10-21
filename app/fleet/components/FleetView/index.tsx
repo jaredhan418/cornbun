@@ -3,16 +3,17 @@ import { CheckCircleFilled, CloseCircleFilled, CloseSquareFilled, ExclamationCir
 import { Button, Collapse, CollapseProps, Divider, GetProps, Image, Input, message, Modal, Spin } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
-import mock_data from '@/app/mocks/fleet.json';
 import _ from 'lodash';
+import { play } from 'elevenlabs'
 import { BMSuggestion } from '@/app/interfaces';
 import { fetchApi } from '@/app/serviceUtil';
 
-import { addGroup } from '../action';
+import { addGroup, getAllVinInGroup } from '../action';
 
 type OTPProps = GetProps<typeof Input.OTP>;
 
-function FleetView() {
+function FleetView(props: any) {
+  const { mapData, onGetVehicle } = props;
   const router = useRouter();
   const { hasTeam, setHasTeam, map } = useAppStore(s => s);
   const [code, setCode] = useState<string>('');
@@ -66,6 +67,18 @@ function FleetView() {
       // }, 2000);
     }
   };
+
+  const onGetVehicleLocation = async () => {
+    const res = await getAllVinInGroup(code);
+
+    const vins = res.map(vin => ({
+      lat: vin.currentLat,
+      lng: vin.currentLon,
+      vin: vin.vin
+    }))
+
+    onGetVehicle(vins);
+  }
 
   const sharedProps: OTPProps = {
     onChange,
@@ -145,12 +158,15 @@ function FleetView() {
               </div>
             </div>
           ))}
+        <Button className='!h-12 !rounded mr-3 !border-none !shadow-md ml-4' onClick={onGetVehicleLocation}>
+          获取车队车辆位置
+        </Button>
       </div>
 
       {hasTeam && (
         <>
           <div className='absolute top-8 right-8 flex flex-col justify-center' style={{ zIndex: 1000 }}>
-            {mock_data.map(data => (
+            {mapData.map((data:any) => (
               <div
                 key={data.id}
                 className='w-30 flex flex-col mb-3 items-center justify-start !rounded py-2 px-4 !border-none !shadow-md bg-white'
@@ -202,9 +218,9 @@ function FleetView() {
         <div className='p-2'>
           <div className='my-3 text-xl font-medium'>
             <ExclamationCircleFilled className='mr-2' style={{ color: '#3e6ae1' }} />
-            您尚未在车队中，请创建或加入车队
+            您尚未在车队中，请<a onClick={() => router.push("/user/createFleet")}>创建</a>或加入车队
           </div>
-          <div className='italic text-sm text-gray-500'>通过输入6位密码来创建或申请加入一个已经存在的车队</div>
+          <div className='italic text-sm text-gray-500'>通过输入6位密码来加入一个已经存在的车队</div>
           <div className='my-6 flex justify-center items-center'>
             <Input.OTP formatter={str => str.toUpperCase()} variant='filled' {...sharedProps} value={code} />
           </div>
@@ -255,11 +271,19 @@ const items: CollapseProps['items'] = [
   {
     key: '1',
     label: '快捷消息列表',
-    children: ['下个服务区大家休息！', '前方有事故，注意避让', '我需要帮助'].map(str => (
-      <div key={str} className='message flex justify-start items-start my'>
-        {str}
-      </div>
-    )),
+    children: ['下个服务区大家休息！', '前方有事故，注意避让', '我需要帮助'].map(str => {
+      const playAIVoice = async (text: string) => {
+        const searchParams = new URLSearchParams();
+        searchParams.append("text", text);
+        const res = await fetchApi<ReadableStream>("ai", { searchParams }).text();
+      }
+
+      return (
+        <div key={str} className='message flex justify-start items-start my' onClick={() => playAIVoice(str)}>
+          {str}
+        </div>
+      )
+    }),
   },
 ];
 
