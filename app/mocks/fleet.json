@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Frank Jiao", "icon": "bear", "lat": 39.916979, "lng": 116.484344, "distance": 0.5 },
+  { "id": 2, "name": "Ming Sun", "icon": "rabbit", "lat": 39.914813, "lng": 116.486675, "distance": 0.1 },
+  { "id": 3, "name": "Artoria Fan", "icon": "meerkat", "lat": 39.915744, "lng": 116.488974, "distance": 0.2 },
+  { "id": 4, "name": "Jared Han", "icon": "dog", "lat": 39.913078, "lng": 116.484307, "distance": 0.3 },
+  { "id": 5, "name": "Thomas Yu", "icon": "chicken", "lat": 39.914544, "lng": 116.48774, "distance": 0.1 }
+]

@@ -8,27 +8,31 @@ datasource db {
 }
 
 model vininfo {
-  id          Int    @id @default(autoincrement())
-  vin         String @db.VarChar(17)
-  displayname String @db.VarChar(255)
-  token       String @db.VarChar(4096)
-  accountId   String @db.VarChar(255)
+  id        Int     @id @default(autoincrement())
+  vin       String  @db.VarChar(17)
+  userId    String? @db.VarChar(255)
+  groupCode String?
+}
+
+model vinGroup {
+  id        Int     @id @default(autoincrement())
+  groupCode String
+  ownerId   String
+  groupName String?
 }
 
 model User {
   id            String          @id @default(cuid())
   name          String?
-  emailVerified DateTime?
   image         String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  emailVerified DateTime?
   accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
   Authenticator Authenticator[]
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  sessions      Session[]
 }
- 
+
 model Account {
   userId            String
   type              String
@@ -41,34 +45,30 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
- 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@id([provider, providerAccountId])
 }
- 
+
 model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@id([identifier, token])
 }
- 
-// Optional for WebAuthn support
+
 model Authenticator {
   credentialID         String  @unique
   userId               String
@@ -78,8 +78,7 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
- 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+  user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@id([userId, credentialID])
 }

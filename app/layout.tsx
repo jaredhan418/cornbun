@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <title>Cornbun</title>
+      </head>
       <body>
         <AppStoreProvider>
           <AntdRegistry>{children}</AntdRegistry>

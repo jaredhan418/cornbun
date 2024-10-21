@@ -1,5 +1,5 @@
 import React from 'react';
-import { isCurrentTime } from '../ChargingMap/util';
+import { isCurrentTime } from '../../../utils';
 import { Divider, Tag } from 'antd';
 import { useAppStore } from '@/app/providers';
 

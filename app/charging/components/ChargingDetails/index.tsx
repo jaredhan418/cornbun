@@ -2,7 +2,7 @@ import { useAppStore } from '@/app/providers';
 import { CoffeeOutlined, HeartFilled, HeartOutlined, PhoneFilled, ShopOutlined, ShoppingOutlined, ThunderboltFilled } from '@ant-design/icons';
 import { Alert, Button, Divider, Drawer, Tag } from 'antd';
 import React, { useState } from 'react';
-import { isCurrentTime } from '../ChargingMap/util';
+import { isCurrentTime } from '@/app/utils';
 
 function CharginDetails() {
   const { currentStation, setCurrentStation, map } = useAppStore(s => s);

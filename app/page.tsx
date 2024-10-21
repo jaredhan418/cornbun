@@ -1,15 +1,62 @@
-'use client';
-import { useRouter } from 'next/navigation';
 import { Button } from 'antd';
+import Link from 'next/link';
 
-export default function Home() {
-  const router = useRouter();
+import { auth } from '@/auth';
+import { Header } from './_components/header';
+
+export default async function Home() {
+  const session = await auth();
+
+  const userName = session?.user?.name;
 
   return (
-    <div>
-      <div>123</div>
-      <Button onClick={() => router.push('map')}>充电</Button>
-      <Button>车队</Button>
+    <div className='relative w-full h-full'>
+      <div className='absolute top-4 left-4 text-3xl font-bold flex'>
+        <img src='/images/logo.svg' className='w-7 mr-2' />
+        <span className=''>Road</span>
+        <span className='text-gray-500'>Link</span>
+      </div>
+      <Header userName={userName} />
+      <div className='flex justify-center items-center w-full h-full -translate-y-20'>
+        <div className='border-8 h-96 border-gray-700 p-2 relative flex items-center justify-center mx-6'>
+          <div className='absolute flex flex-col gap-y-1 left-2 top-2'>
+            {[1, 2, 3].map(val => (
+              <div key={val} className='bg-black w-3 h-3'></div>
+            ))}
+          </div>
+          <div className='absolute flex flex-col gap-y-1 right-2 bottom-2'>
+            {[1, 2, 3].map(val => (
+              <div key={val} className='bg-black w-3 h-3'></div>
+            ))}
+          </div>
+          <Link href='/charging' className='block mx-5'>
+            <div className='font-bold text-3xl'>充电</div>
+            <div className='w-full h-1 bg-gray-500'></div>
+            <div className='italic font-light'>Find a Charging Station</div>
+          </Link>
+        </div>
+        <div className='border-8 h-96 border-gray-700 p-2 relative flex items-center justify-center'>
+          <div className='absolute flex flex-col gap-y-1 left-2 top-2'>
+            {[1, 2, 3].map(val => (
+              <div key={val} className='bg-black w-3 h-3'></div>
+            ))}
+          </div>
+          <div className='absolute flex flex-col gap-y-1 right-2 bottom-2'>
+            {[1, 2, 3].map(val => (
+              <div key={val} className='bg-black w-3 h-3'></div>
+            ))}
+          </div>
+          <Link href='/fleet' className='block mx-5'>
+            <div className='font-bold text-3xl'>车队</div>
+            <div className='w-full h-1 bg-gray-500'></div>
+            <div className='italic font-light'>Connect with Your Team</div>
+          </Link>
+        </div>
+      </div>
+      <div className='absolute bottom-4 right-4 text-2xl font-bold flex'>
+        <span className=''>Connection&nbsp;</span>
+        <span className='text-gray-500'>Is All You Need</span>
+      </div>
     </div>
   );
 }
