@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from '@radix-ui/themes';
 import { redirect } from 'next/navigation';
 
 import { unlockFrunk, findVehicle, createOtk } from './action';
@@ -26,25 +25,19 @@ export default function SmartLife() {
     try {
       const res = await createOtk();
 
-      alert(res);
+      const link = `https://cornbun.fun/otk/${res}`;
+
+      alert(link);
     } catch (e) {
       redirect("/")
     }
   };
 
   return (
-    <div>
+    <div className='m-auto'>
       <form action={createOtkAction}>
         <input type='hidden' name='stub' />
-        <Button type='submit'>生成一次性授权链接</Button>
-      </form>
-      <form action={findAction}>
-        <input type='hidden' name='stub' />
-        <Button type='submit'>寻找车辆</Button>
-      </form>
-      <form action={unlockAction}>
-        <input type='hidden' name='stub' />
-        <Button type='submit'>解锁前备厢</Button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>生成一次性授权链接</button>
       </form>
     </div>
 

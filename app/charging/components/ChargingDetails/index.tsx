@@ -27,7 +27,6 @@ function CharginDetails() {
         json: body,
       });
 
-      console.log(arr);
       message.success('已成功推送到车机端!');
     }
   };

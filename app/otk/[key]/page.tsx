@@ -1,4 +1,3 @@
-import { Button } from '@radix-ui/themes';
 import { redirect } from 'next/navigation';
 
 import { unlockFrunk, findVehicle } from './action';
@@ -28,11 +27,12 @@ export default async function SmartLife({ params }: { params: { key: string } })
     <div>
       <form action={findAction}>
         <input type='hidden' name='stub' />
-        <Button type='submit'>寻找车辆</Button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>寻找车辆</button>
       </form>
+      <br />
       <form action={unlockAction}>
         <input type='hidden' name='stub' />
-        <Button type='submit'>解锁前备厢</Button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>解锁前备厢</button>
       </form>
     </div>
 
