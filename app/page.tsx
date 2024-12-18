@@ -29,7 +29,7 @@ export default async function Home() {
             ))}
           </div>
           <Link href='/charging' className='block mx-5'>
-            <div className='font-bold text-3xl'>充电</div>
+            <div className='font-bold text-3xl'>充电-Charging</div>
             <div className='w-full h-1 bg-gray-500'></div>
             <div className='italic font-light'>Find a Charging Station</div>
           </Link>
@@ -46,7 +46,7 @@ export default async function Home() {
             ))}
           </div>
           <Link href='/fleet' className='block mx-5'>
-            <div className='font-bold text-3xl'>车队</div>
+            <div className='font-bold text-3xl'>车队-Fleet</div>
             <div className='w-full h-1 bg-gray-500'></div>
             <div className='italic font-light'>Connect with Your Team</div>
           </Link>
@@ -63,7 +63,7 @@ export default async function Home() {
             ))}
           </div>
           <Link href='/smartlife' className='block mx-5'>
-            <div className='font-bold text-3xl'>生活</div>
+            <div className='font-bold text-3xl'>生活-Life Style</div>
             <div className='w-full h-1 bg-gray-500'></div>
             <div className='italic font-light'>Use Tesla Improve Your Life</div>
           </Link>
