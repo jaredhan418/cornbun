@@ -4,7 +4,7 @@ import BaiduMap from './BaiduMap';
 import { BAIDU_AK_CLIENT } from '../../constants';
 import FleetView from './FleetView';
 
-import mock_data from '@/app/mocks/fleet.json';
+import mock_data from '@/app/mocks/fleet.json'; 
 
 function MapWrapper() {
   const [mapData, setMapData] = React.useState(mock_data);

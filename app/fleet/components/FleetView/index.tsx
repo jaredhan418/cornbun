@@ -3,8 +3,7 @@ import { CheckCircleFilled, CloseCircleFilled, CloseSquareFilled, ExclamationCir
 import { Button, Collapse, CollapseProps, Divider, GetProps, Image, Input, message, Modal, Spin } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
-import _ from 'lodash';
-import { play } from 'elevenlabs'
+import { debounce, uniqueId } from 'lodash-es';
 import { BMSuggestion } from '@/app/interfaces';
 import { fetchApi } from '@/app/serviceUtil';
 
@@ -30,7 +29,7 @@ function FleetView(props: any) {
   };
 
   const searchDebounce = useCallback(
-    _.debounce(async (_term: string) => {
+    debounce(async (_term: string) => {
       const term = _term.trim();
       if (term?.length <= 0) {
         setSuggestions([]);
@@ -144,7 +143,7 @@ function FleetView(props: any) {
                     {suggestions.map((s, i) => (
                       <div
                         className={'flex items-center justify-start px-2 py-4' + (i !== suggestions.length - 1 ? ' border-b' : '')}
-                        key={s.uid || _.uniqueId()}
+                        key={s.uid || uniqueId()}
                         onClick={() => {
                           setLocation(s);
                         }}

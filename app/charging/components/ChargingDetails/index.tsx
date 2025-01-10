@@ -23,7 +23,7 @@ function CharginDetails() {
         order: 1,
       };
 
-      const arr = await fetchApi.post(`fleet/navigationGPSRequest`, {
+      await fetchApi.post(`fleet/navigationGPSRequest`, {
         json: body,
       });
 
@@ -90,7 +90,7 @@ function CharginDetails() {
             <div style={{ width: '40px' }}>+</div>
             <div style={{ width: '50px' }}>服务费</div>
           </div>
-          {data.priceDetails.map((p: any, i: any) => {
+            {data.priceDetails.map((p: { startTime: string; endTime: string; electricityFee: number; serviceFee: number }, i: number) => {
             const isCurrent = isCurrentTime(p.startTime, p.endTime);
             return (
               <div key={i} className={`mb-3 relative rounded p-2 flex items-center ${isCurrent ? 'bg-gray-200' : 'bg-gray-100'}`}>
