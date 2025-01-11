@@ -1,10 +1,10 @@
-import NextAuth from "next-auth"
+import NextAuth, { type NextAuthConfig} from "next-auth"
 import { skipCSRFCheck } from "@auth/core";
 import { PrismaAdapter } from "@auth/prisma-adapter"
 
 import { prisma } from "@/prisma"
- 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+
+const authConfig: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   providers: [{
     authorization: {
@@ -27,6 +27,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     id: "tesla-auth",
   }],
   secret: process.env.AUTH_SECRET,
+  // @ts-expect-error deps issue
   skipCSRFCheck: skipCSRFCheck,
   trustHost: true,
-})
+}
+ 
+export const { handlers, signIn, signOut, auth } = NextAuth(authConfig)
