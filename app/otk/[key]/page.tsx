@@ -10,7 +10,7 @@ export default async function SmartLife({ params }: { params: { key: string } })
     try {
       await unlockFrunk(key);
     } catch (e) {
-      redirect("/")
+      redirect('/');
     }
   };
 
@@ -19,7 +19,7 @@ export default async function SmartLife({ params }: { params: { key: string } })
     try {
       await findVehicle(key);
     } catch (e) {
-      redirect("/")
+      redirect('/');
     }
   };
 
@@ -27,14 +27,17 @@ export default async function SmartLife({ params }: { params: { key: string } })
     <div>
       <form action={findAction}>
         <input type='hidden' name='stub' />
-        <button className='bg-gray-200 h-10 w-48' type='submit'>寻找车辆</button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>
+          寻找车辆
+        </button>
       </form>
       <br />
       <form action={unlockAction}>
         <input type='hidden' name='stub' />
-        <button className='bg-gray-200 h-10 w-48' type='submit'>解锁前备厢</button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>
+          解锁前备厢
+        </button>
       </form>
     </div>
-
   );
 }

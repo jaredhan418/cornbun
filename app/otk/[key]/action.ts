@@ -11,12 +11,12 @@ export async function unlockFrunk(key: string) {
   const otk = await prisma.otk.findFirst({
     where: {
       otkKey: key,
-      feature: "2",
-    }
-  })
+      feature: '2',
+    },
+  });
 
   if (!otk) {
-    throw new Error('Not has valid key');    
+    throw new Error('Not has valid key');
   }
 
   const searchParams = new URLSearchParams();
@@ -28,8 +28,8 @@ export async function unlockFrunk(key: string) {
   await prisma.otk.delete({
     where: {
       id: otk.id,
-    }
-  })
+    },
+  });
 
   return res;
 }
@@ -42,12 +42,12 @@ export async function findVehicle(key: string) {
   const otk = await prisma.otk.findFirst({
     where: {
       otkKey: key,
-      feature: "1",
-    }
-  })
+      feature: '1',
+    },
+  });
 
   if (!otk) {
-    throw new Error('Not has valid key');    
+    throw new Error('Not has valid key');
   }
 
   const searchParams = new URLSearchParams();
@@ -59,8 +59,8 @@ export async function findVehicle(key: string) {
   await prisma.otk.delete({
     where: {
       id: otk.id,
-    }
-  })
+    },
+  });
 
   return res;
 }

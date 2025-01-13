@@ -1,2 +1,2 @@
-export const BAIDU_AK_CLIENT = 'F9GRixzIiYmpKDIqblgbTNskh8JfZHlo';
-export const BAIDU_AK_SERVER = '0M5mvZiLImjrZmxIuU1Q9PzL7VxujvZj';
+export const BAIDU_AK_CLIENT = 'L1MEi88GVDDZ1g09mEaOIS7GQaFbPVAA';
+export const BAIDU_AK_SERVER = 'L1MEi88GVDDZ1g09mEaOIS7GQaFbPVAA';

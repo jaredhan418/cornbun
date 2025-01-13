@@ -73,11 +73,11 @@ function FleetView(props: any) {
     const vins = res.map(vin => ({
       lat: vin.currentLat,
       lng: vin.currentLon,
-      vin: vin.vin
-    }))
+      vin: vin.vin,
+    }));
 
     onGetVehicle(vins);
-  }
+  };
 
   const sharedProps: OTPProps = {
     onChange,
@@ -165,7 +165,7 @@ function FleetView(props: any) {
       {hasTeam && (
         <>
           <div className='absolute top-8 right-8 flex flex-col justify-center' style={{ zIndex: 1000 }}>
-            {mapData.map((data:any) => (
+            {mapData.map((data: any) => (
               <div
                 key={data.id}
                 className='w-30 flex flex-col mb-3 items-center justify-start !rounded py-2 px-4 !border-none !shadow-md bg-white'
@@ -217,7 +217,7 @@ function FleetView(props: any) {
         <div className='p-2'>
           <div className='my-3 text-xl font-medium'>
             <ExclamationCircleFilled className='mr-2' style={{ color: '#3e6ae1' }} />
-            您尚未在车队中，请<a onClick={() => router.push("/user/createFleet")}>创建</a>或加入车队
+            您尚未在车队中，请<a onClick={() => router.push('/user/createFleet')}>创建</a>或加入车队
           </div>
           <div className='italic text-sm text-gray-500'>通过输入6位密码来加入一个已经存在的车队</div>
           <div className='my-6 flex justify-center items-center'>
@@ -273,15 +273,15 @@ const items: CollapseProps['items'] = [
     children: ['下个服务区大家休息！', '前方有事故，注意避让', '我需要帮助'].map(str => {
       const playAIVoice = async (text: string) => {
         const searchParams = new URLSearchParams();
-        searchParams.append("text", text);
-        const res = await fetchApi<ReadableStream>("ai", { searchParams }).text();
-      }
+        searchParams.append('text', text);
+        const res = await fetchApi<ReadableStream>('ai', { searchParams }).text();
+      };
 
       return (
         <div key={str} className='message flex justify-start items-start my' onClick={() => playAIVoice(str)}>
           {str}
         </div>
-      )
+      );
     }),
   },
 ];

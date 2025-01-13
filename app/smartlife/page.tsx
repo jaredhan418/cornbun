@@ -1,15 +1,16 @@
-"use client"
+'use client';
 
 import { redirect } from 'next/navigation';
 
 import { unlockFrunk, findVehicle, createOtk } from './action';
+import './styles.css';
 
 export default function SmartLife() {
   const unlockAction = async (formData: FormData) => {
     try {
       await unlockFrunk();
     } catch (e) {
-      redirect("/")
+      redirect('/');
     }
   };
 
@@ -17,7 +18,7 @@ export default function SmartLife() {
     try {
       await findVehicle();
     } catch (e) {
-      redirect("/")
+      redirect('/');
     }
   };
 
@@ -29,7 +30,7 @@ export default function SmartLife() {
 
       alert(link);
     } catch (e) {
-      redirect("/")
+      redirect('/');
     }
   };
 
@@ -37,9 +38,10 @@ export default function SmartLife() {
     <div className='m-auto'>
       <form action={createOtkAction}>
         <input type='hidden' name='stub' />
-        <button className='bg-gray-200 h-10 w-48' type='submit'>生成一次性授权链接</button>
+        <button className='bg-gray-200 h-10 w-48' type='submit'>
+          生成一次性授权链接
+        </button>
       </form>
     </div>
-
   );
 }

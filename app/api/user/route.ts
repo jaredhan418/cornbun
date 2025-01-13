@@ -1,3 +1,3 @@
-export async function GET() {  
-  return new Response("User!");
+export async function GET() {
+  return new Response('User!');
 }

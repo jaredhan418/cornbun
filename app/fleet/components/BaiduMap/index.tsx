@@ -37,7 +37,7 @@ const BaiduMap = (props: any) => {
 
   useEffect(() => {
     if (map && hasTeam) {
-      mapData.forEach((owner:any) => {
+      mapData.forEach((owner: any) => {
         addMarker(`${owner.icon}_marker`, owner);
       });
     }

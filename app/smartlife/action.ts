@@ -110,19 +110,19 @@ export async function createOtk() {
     data: {
       accessToken,
       vin: vinInfo.vin,
-      feature: "1",
+      feature: '1',
       otkKey: key,
-    }
-  })
+    },
+  });
 
   await prisma.otk.create({
     data: {
       accessToken,
       vin: vinInfo.vin,
-      feature: "2",
+      feature: '2',
       otkKey: key,
-    }
-  })
+    },
+  });
 
   return key;
 }
