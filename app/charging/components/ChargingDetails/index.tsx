@@ -90,7 +90,7 @@ function CharginDetails() {
             <div style={{ width: '40px' }}>+</div>
             <div style={{ width: '50px' }}>服务费</div>
           </div>
-            {data.priceDetails.map((p: { startTime: string; endTime: string; electricityFee: number; serviceFee: number }, i: number) => {
+          {data.priceDetails.map((p: { startTime: string; endTime: string; electricityFee: number; serviceFee: number }, i: number) => {
             const isCurrent = isCurrentTime(p.startTime, p.endTime);
             return (
               <div key={i} className={`mb-3 relative rounded p-2 flex items-center ${isCurrent ? 'bg-gray-200' : 'bg-gray-100'}`}>
@@ -99,9 +99,9 @@ function CharginDetails() {
                 </div>
                 <div style={{ width: '90px' }}>{(p?.electricityFee + p?.serviceFee).toFixed(2)}</div>
                 <div style={{ width: '40px' }}></div>
-                <div style={{ width: '50px' }}>{(p?.electricityFee).toFixed(2)}</div>
+                <div style={{ width: '50px' }}>{(p?.electricityFee ?? 0).toFixed(2)}</div>
                 <div style={{ width: '40px' }}></div>
-                <div style={{ width: '50px' }}>{(p?.serviceFee).toFixed(2)}</div>
+                <div style={{ width: '50px' }}>{(p?.serviceFee ?? 0).toFixed(2)}</div>
 
                 {isCurrent && (
                   <div className='absolute -right-3 -top-2'>

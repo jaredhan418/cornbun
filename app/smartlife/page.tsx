@@ -1,27 +1,11 @@
 'use client';
 
 import { redirect } from 'next/navigation';
+import { Button } from '@radix-ui/themes';
 
-import { unlockFrunk, findVehicle, createOtk } from './action';
-import './styles.css';
+import { createOtk } from './action';
 
 export default function SmartLife() {
-  const unlockAction = async (formData: FormData) => {
-    try {
-      await unlockFrunk();
-    } catch (e) {
-      redirect('/');
-    }
-  };
-
-  const findAction = async (formData: FormData) => {
-    try {
-      await findVehicle();
-    } catch (e) {
-      redirect('/');
-    }
-  };
-
   const createOtkAction = async (formData: FormData) => {
     try {
       const res = await createOtk();
@@ -35,12 +19,12 @@ export default function SmartLife() {
   };
 
   return (
-    <div className='m-auto'>
+    <div className='m-8'>
       <form action={createOtkAction}>
         <input type='hidden' name='stub' />
-        <button className='bg-gray-200 h-10 w-48' type='submit'>
+        <Button variant='soft' type='submit'>
           生成一次性授权链接
-        </button>
+        </Button>
       </form>
     </div>
   );

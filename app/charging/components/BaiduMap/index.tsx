@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useMap, useMapContext, useMarker } from '@uiw/react-baidu-map';
+import React, { useEffect, useRef, useState } from 'react';
+import { useMap, useMapContext } from '@uiw/react-baidu-map';
 import * as styleJson from '../../config/style.json';
 import { useAppStore } from '@/app/providers';
-import mock_stations from '@/app/mocks/charging_stations.json';
+import mock_stations from '@/mocks/charging_stations.json';
 
 const BaiduMap = () => {
   const { map } = useMapContext();

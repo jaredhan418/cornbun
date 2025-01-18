@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { unlockFrunk, findVehicle } from './action';
 
-export default async function SmartLife({ params }: { params: { key: string } }) {
-  const { key } = params;
+export default async function SmartLife({ params }: { params: Promise<{ key: string }> }) {
+  const { key } = await params;
 
   const unlockAction = async (formData: FormData) => {
     'use server';

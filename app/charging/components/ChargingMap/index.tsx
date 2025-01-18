@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import mock_stations from '@/app/mocks/charging_stations.json';
+import mock_stations from '@/mocks/charging_stations.json';
 import ChargingItem from '../ChargingItem';
 import CharginDetails from '../ChargingDetails';
 import { LeftOutlined } from '@ant-design/icons';
