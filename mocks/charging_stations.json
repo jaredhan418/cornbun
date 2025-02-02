@@ -39,7 +39,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.83,
         "serviceFee": 0.16
       }
@@ -79,7 +79,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.58,
         "serviceFee": 1.17
       }
@@ -119,7 +119,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.58,
         "serviceFee": 1.17
       }
@@ -159,7 +159,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.58,
         "serviceFee": 1.17
       }
@@ -199,7 +199,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.58,
         "serviceFee": 1.17
       }
@@ -239,7 +239,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.58,
         "serviceFee": 1.17
       }
@@ -285,7 +285,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.6,
         "serviceFee": 0.12
       }
@@ -331,7 +331,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.39,
         "serviceFee": 0.22
       }
@@ -377,7 +377,7 @@
       },
       {
         "startTime": "22:00",
-        "endTime": "24:00",
+        "endTime": "23:59",
         "electricityFee": 0.39,
         "serviceFee": 0.29
       }
