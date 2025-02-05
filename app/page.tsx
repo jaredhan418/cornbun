@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { auth } from '@/auth';
 import { Header } from './_components/header';
 
-export default async function Home() {
+export default async function Index() {
   const session = await auth();
 
   const userName = session?.user?.name;
